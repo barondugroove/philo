@@ -6,11 +6,19 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:16:07 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/07 16:49:51 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:55:38 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	get_time(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec) * 1000 + (tv.tv_usec) / 1000);
+}
 
 static int	ft_intlen(int n)
 {

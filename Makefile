@@ -6,7 +6,7 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/13 12:26:21 by bchabot           #+#    #+#              #
-#    Updated: 2022/11/07 17:35:59 by bchabot          ###   ########.fr        #
+#    Updated: 2022/11/08 18:55:45 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ SRCS = philo.c \
 	   philo_utils.c \
 	   print_data.c
 
-CC = clang
+CC = clang -pthread
 
-CFLAGS = -Wall -Wextra -Werror -pthread -g
+CFLAGS = -g -Wall -Wextra -Werror
 
 NAME = philo
 

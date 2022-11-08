@@ -6,30 +6,47 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:10:58 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/07 18:56:48 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:55:42 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	print_data(t_data *data)
+void	*life(void *philo)
 {
-	printf("number of philosophers is %d\n", data->nbr_philo);
-	printf("time to die is %dms\n", data->tt_die);
-	printf("time to eat is %dms\n", data->tt_eat);
-	printf("time to sleep is %dms\n", data->tt_sleep);
-	if (data->max_eat_nbr)
-		printf("max eat repetition is %d\n", data->max_eat_nbr);
+	t_philo	*p = philo;
+
+	pthread_mutex_lock(&p->data->print);
+	printf("%d philo %d\n", (get_time() - p->data->time), p->my_id);
+	pthread_mutex_unlock(&p->data->print);
+	return (NULL);
 }
 
 void	philo(char **av, t_data *data)
 {
-	pthread_t	*philos;
+	t_philo		*philos;
+	pthread_t	philos_id[256];
+	int			i;
 
+	i = 0;
 	if (check_args_errors(av))
 		return ;
 	parse_data(data, av);
-	print_data(data);
+	philos = malloc(sizeof(t_philo) * data->nbr_philo);
+	init_data(philos, data);
+	print_data(data, philos);
+	while (i < data->nbr_philo)
+	{
+		pthread_create(&philos_id[i], NULL, &life, &philos[i]);
+		usleep(50);
+		i++;
+	}
+	i = 0;
+	while (i < data->nbr_philo)
+	{
+		pthread_join(philos_id[i], NULL);
+		i++;
+	}
 	return ;
 }
 
