@@ -6,15 +6,17 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/13 12:26:21 by bchabot           #+#    #+#              #
-#    Updated: 2022/11/08 18:55:45 by bchabot          ###   ########.fr        #
+#    Updated: 2022/11/09 19:51:54 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = philo.c \
+SRCS = main.c \
 	   parse_data.c \
 	   check_errors.c \
 	   philo_utils.c \
-	   print_data.c
+	   print_data.c \
+	   dinner.c \
+	   death.c
 
 CC = clang -pthread
 

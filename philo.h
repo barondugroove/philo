@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:26:12 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/08 18:55:43 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/09 19:56:40 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/time.h>
+# include <limits.h>
 
 typedef struct s_data {
 	int				time;
@@ -32,7 +33,6 @@ typedef struct s_data {
 typedef struct s_philo {
 	int				my_id;
 	int				tl_meal;
-	int				is_eating;
 	pthread_mutex_t	my_fork;
 	pthread_mutex_t	your_fork;
 	t_data			*data;
@@ -44,7 +44,9 @@ int		check_args_errors(char **av);
 void	ft_putendl_fd(char *s, int fd);
 int		ft_atoi(const char *nptr);
 void	print_data(t_data *data, t_philo *philos);
-
-int	get_time(void);
+int		get_time(void);
+void	*life(void *philo);
+void	print_message(t_philo *philo, char *msg);
+int		death(t_philo *philos);
 
 #endif

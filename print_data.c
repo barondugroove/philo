@@ -6,11 +6,22 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:48:22 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/08 18:55:41 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/09 20:16:41 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	print_message(t_philo *philo, char *msg)
+{
+	t_philo	*p;
+
+	p = philo;
+	pthread_mutex_lock(&p->data->print);
+	printf("%d %d %s\n", (get_time() - p->data->time), p->my_id, msg);
+	pthread_mutex_unlock(&p->data->print);
+	return ;
+}
 
 void	print_data(t_data *data, t_philo *philos)
 {
@@ -25,12 +36,6 @@ void	print_data(t_data *data, t_philo *philos)
 	if (data->max_eat_nbr)
 		printf("max eat repetition is %d\n", data->max_eat_nbr);
 	printf("------------------------------------\n\n");
-/*	while (i < data->nbr_philo)
-	{
-		printf("Je suis le philo %d.\n", philos[i].my_id);
-		printf("J'ai mangé il y a %dms.\n", philos[i].tl_meal);
-		i++;
-	}*/
 }
 
 void	ft_putchar_fd(char c, int fd)

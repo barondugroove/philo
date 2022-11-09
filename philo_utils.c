@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:16:07 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/08 18:55:38 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/09 20:09:34 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ char	*ft_itoa(int n)
 
 int	ft_atoi(const char *nptr)
 {
-	int	nbr;
-	int	neg;
-	int	i;
+	int long	nbr;
+	int			neg;
+	int			i;
 
 	i = 0;
 	neg = 1;
@@ -85,5 +85,7 @@ int	ft_atoi(const char *nptr)
 		nbr = nbr * 10 + (nptr[i] - 48);
 		i++;
 	}
+	if ((nbr * neg) > INT_MAX || (nbr * neg) < INT_MIN)
+		return (-1);
 	return (nbr * neg);
 }
