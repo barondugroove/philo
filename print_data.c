@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:48:22 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/09 20:16:41 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/10 19:18:46 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,9 @@ void	print_message(t_philo *philo, char *msg)
 	return ;
 }
 
-void	print_data(t_data *data, t_philo *philos)
+void	print_data(t_data *data, int i)
 {
-	int	i;
-
-	(void)philos;
-	i = 0;
+	printf("I am philosopher %d\n", i);
 	printf("number of philosophers is %d\n", data->nbr_philo);
 	printf("time to die is %dms\n", data->tt_die);
 	printf("time to eat is %dms\n", data->tt_eat);

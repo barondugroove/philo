@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:16:07 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/09 20:09:34 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/10 19:18:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,48 +18,6 @@ int	get_time(void)
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec) * 1000 + (tv.tv_usec) / 1000);
-}
-
-static int	ft_intlen(int n)
-{
-	int	i;
-
-	i = 1;
-	while (n >= 10 || n <= -10)
-	{
-		i++;
-		n /= 10;
-	}
-	return (i);
-}
-
-char	*ft_itoa(int n)
-{
-	char			*tab;
-	int				i;
-	unsigned int	x;
-	int				neg;
-
-	x = n;
-	neg = 0;
-	if (n < 0)
-	{
-		x = -n;
-		neg = 1;
-	}
-	i = ft_intlen(n);
-	tab = malloc(sizeof(char) * ((i += neg) + 1));
-	if (!tab)
-		return (NULL);
-	if (neg)
-		tab[0] = '-';
-	tab[i] = '\0';
-	while (i-- > neg)
-	{
-		tab[i] = (x % 10) + '0';
-		x /= 10;
-	}
-	return (tab);
 }
 
 int	ft_atoi(const char *nptr)
