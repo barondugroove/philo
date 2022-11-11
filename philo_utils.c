@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: benjaminchabot <benjaminchabot@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:16:07 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/10 19:18:25 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/11 14:13:53 by benjamincha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	get_time(void)
+long int	get_time(void)
 {
 	struct timeval	tv;
 

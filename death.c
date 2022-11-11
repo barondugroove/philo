@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: benjaminchabot <benjaminchabot@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 19:34:39 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/10 19:23:12 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/11 14:10:59 by benjamincha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*undertaker(void *philos)
 		else
 			i = 0;
 	}
-	p[i].is_dead = 1;
+	p[i].data->is_dead = 1;
 	print_message(&p[i], " is dead.");
 	return (NULL);
 }

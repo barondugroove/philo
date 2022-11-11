@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dinner.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: benjaminchabot <benjaminchabot@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:11:18 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/10 19:21:29 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/11 14:11:16 by benjamincha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*life(void *philo)
 
 	p = philo;
 	i = 0;
-	while (!p->is_dead)
+	while (!p->data->is_dead)
 	{
 		print_message(philo, "is thinking.");
 		if (i <= p->data->max_eat_nbr || p->data->max_eat_nbr == 0)
