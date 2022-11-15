@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:48:22 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/10 19:18:46 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/15 18:11:18 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	print_message(t_philo *philo, char *msg)
 
 	p = philo;
 	pthread_mutex_lock(&p->data->print);
-	printf("%d %d %s\n", (get_time() - p->data->time), p->my_id, msg);
+	pthread_mutex_lock(&p->data->reaper);
+	if (!philo->data->is_dead)
+		printf("%lld %d %s\n", (get_time() - p->data->start), p->my_id, msg);
+	pthread_mutex_unlock(&p->data->reaper);
 	pthread_mutex_unlock(&p->data->print);
 	return ;
 }
@@ -27,9 +30,10 @@ void	print_data(t_data *data, int i)
 {
 	printf("I am philosopher %d\n", i);
 	printf("number of philosophers is %d\n", data->nbr_philo);
-	printf("time to die is %dms\n", data->tt_die);
-	printf("time to eat is %dms\n", data->tt_eat);
-	printf("time to sleep is %dms\n", data->tt_sleep);
+	printf("start time is %lldms\n", data->start);
+	printf("time to die is %lldms\n", data->tt_die);
+	printf("time to eat is %lldms\n", data->tt_eat);
+	printf("time to sleep is %lldms\n", data->tt_sleep);
 	if (data->max_eat_nbr)
 		printf("max eat repetition is %d\n", data->max_eat_nbr);
 	printf("------------------------------------\n\n");

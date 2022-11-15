@@ -6,7 +6,7 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/13 12:26:21 by bchabot           #+#    #+#              #
-#    Updated: 2022/11/09 20:19:03 by bchabot          ###   ########.fr        #
+#    Updated: 2022/11/15 18:43:11 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS = main.c \
 	   dinner.c \
 	   death.c
 
-CC = clang -pthread
+CC = gcc -pthread -fsanitize=thread
 
 CFLAGS = -g -Wall -Wextra -Werror
 
