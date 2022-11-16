@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:10:58 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/15 17:46:13 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:08:52 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	philo(char **av, t_data *data)
 	}
 	death(philos);
 	i = 0;
-	if (data->nbr_philo == 1)
-		pthread_mutex_unlock(&philos[0].my_fork);
 	while (i < data->nbr_philo)
 	{
 		pthread_join(thread_id[i], NULL);

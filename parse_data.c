@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:15:45 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/15 17:22:45 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/16 18:14:37 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_data(t_philo *philo, t_data *data)
 	i = 0;
 	pthread_mutex_init(&data->print, NULL);
 	pthread_mutex_init(&data->reaper, NULL);
+	pthread_mutex_init(&data->eat_count, NULL);
 	while (i < data->nbr_philo)
 	{
 		philo[i].data = data;
@@ -47,5 +48,5 @@ void	parse_data(t_data *data, char **av)
 	if (av[5])
 		data->max_eat_nbr = ft_atoi(av[5]);
 	else
-		data->max_eat_nbr = 0;
+		data->max_eat_nbr = -1;
 }

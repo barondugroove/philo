@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:26:12 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/14 16:33:45 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/16 18:23:01 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_data {
 	int				max_eat_nbr;
 	pthread_mutex_t	print;
 	pthread_mutex_t	reaper;
+	pthread_mutex_t	eat_count;
 }	t_data;
 
 typedef struct s_philo {
