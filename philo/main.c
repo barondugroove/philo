@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:10:58 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/17 18:18:36 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/21 20:25:54 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,17 @@
 
 void	philo(char **av, t_data *data)
 {
-	t_philo		*philos;
-	pthread_t	*thread_id;
-	int			i;
+	t_philo		philos[256];
+	pthread_t	threads_id[256];
 
-	i = 0;
-	if (check_args_errors(av))
-		return ;
 	parse_data(data, av);
-	philos = malloc(sizeof(t_philo) * data->nbr_philo);
-	thread_id = malloc(sizeof(pthread_t) * data->nbr_philo);
 	init_data(philos, data);
-	while (i < data->nbr_philo)
-	{
-		pthread_create(&thread_id[i], NULL, &life, &philos[i]);
-		i++;
-	}
+	create_threads(philos, threads_id, data->nbr_philo);
 	death(philos);
-	i = 0;
-	while (i < data->nbr_philo)
-	{
-		pthread_join(thread_id[i], NULL);
-		i++;
-	}
+	if (data->nbr_philo == 1)
+		pthread_mutex_unlock(&philos[0].my_fork);
+	join_threads(threads_id, data->nbr_philo);
+	destroy_mutex(philos, data->nbr_philo);
 	return ;
 }
 
@@ -45,8 +33,15 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	if (ac > 4 && ac <= 6)
+	{
+		if (check_args_errors(av))
+			return (1);
 		philo(av, &data);
+	}
 	else
-		ft_putendl_fd("Wrong arguments, please try again.", 2);
+	{
+		printf("Wrong arguments, please try again.");
+		return (2);
+	}
 	return (0);
 }

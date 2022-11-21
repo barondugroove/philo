@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 19:34:39 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/16 15:19:26 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/21 20:37:10 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ void	*undertaker(void *philos)
 	t_philo	*p;
 	int		i;
 
+	p = (t_philo *)philos;
 	i = 0;
-	p = philos;
 	while (1)
 	{
 		pthread_mutex_lock(&p[i].data->reaper);
-		if ((p[i].tl_meal + p[i].data->tt_die) <= get_time())
+		if (get_time() - p[i].tl_meal >= p[i].data->tt_die)
 		{
-			p[i].data->is_dead = 1;
-			printf("%lld %d %s\n", (get_time() - p->data->start), p[i].my_id, "died.");
+			pthread_mutex_unlock(&p[i].data->reaper);
+			print_message(&p[i], "died");
+			set_death(&p[i]);
 			break ;
 		}
 		pthread_mutex_unlock(&p[i].data->reaper);
-		if (i <= p[i].data->nbr_philo)
+		if (i == p[i].data->nbr_philo - 1)
 			i = 0;
 		else
 			i++;
 	}
-	pthread_mutex_unlock(&p[i].data->reaper);
 	return (NULL);
 }
 

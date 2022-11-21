@@ -6,7 +6,7 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/13 12:26:21 by bchabot           #+#    #+#              #
-#    Updated: 2022/11/17 13:59:45 by bchabot          ###   ########.fr        #
+#    Updated: 2022/11/21 20:41:33 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@ SRCS = main.c \
 	   parse_data.c \
 	   check_errors.c \
 	   philo_utils.c \
-	   print_data.c \
 	   dinner.c \
-	   death.c
+	   death.c \
+	   getset_data.c \
+	   threads.c
 
 CC = gcc -pthread
 

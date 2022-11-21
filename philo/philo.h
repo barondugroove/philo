@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:26:12 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/16 18:23:01 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/21 20:34:04 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,29 @@ typedef struct s_philo {
 	t_data			*data;
 }	t_philo;
 
-void			parse_data(t_data *data, char **av);
-void			init_data(t_philo *philo, t_data *data);
-int				check_args_errors(char **av);
-void			ft_putendl_fd(char *s, int fd);
-int				ft_atoi(const char *nptr);
-void			print_data(t_data *data, int i);
-long long		get_time(void);
-void			*life(void *philo);
-void			print_message(t_philo *philo, char *msg);
-int				death(t_philo *philos);
+// CHECK_ERRORS
+int			check_args_errors(char **av);
+void		*life(void *philo);
+int			death(t_philo *philos);
+
+// PARSING
+void		parse_data(t_data *data, char **av);
+void		init_data(t_philo *philo, t_data *data);
+
+// GETSET_DATA
+int			get_death(t_philo *philo);
+int			get_replete(t_philo *philo);
+void		set_eat_count(t_philo *philo, int miam);
+void		set_death(t_philo *philo);
+
+// PHILO_UTILS
+void		print_message(t_philo *philo, char *msg);
+long long	get_time(void);
+int			ft_atoi(const char *nptr);
+
+// THREADS
+void		create_threads(t_philo *philos, pthread_t *threads_id, int nbr);
+void		join_threads(pthread_t *threads_id, int nbr);
+void		destroy_mutex(t_philo *philos, int nbr);
 
 #endif

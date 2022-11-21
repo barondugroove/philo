@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:32:52 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/09 15:01:38 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/21 19:39:01 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ int	check_args_errors(char **av)
 	int	i;
 
 	i = 1;
+	if (ft_atoi(av[1]) > 256)
+	{
+		printf("Arguments n°%d is wrong, please try again.\n", 1);
+		return (i);
+	}
 	while (av[i])
 	{
-		if (!ft_isnumber(av[i]) || ft_atoi(av[i]) == -1)
+		if (!ft_isnumber(av[i]) || ft_atoi(av[i]) <= 0)
 		{
-			printf("Arguments n°%d is not a number please try again.\n", i);
-			return (i);
-		}
-		if (i == 1 && ft_atoi(av[i]) == 0)
-		{
-			printf("Number of philosophers is zero.\n");
+			printf("Arguments n°%d is wrong, please try again.\n", i);
 			return (i);
 		}
 		i++;
