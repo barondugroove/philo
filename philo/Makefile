@@ -6,7 +6,7 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/13 12:26:21 by bchabot           #+#    #+#              #
-#    Updated: 2022/11/21 20:41:33 by bchabot          ###   ########.fr        #
+#    Updated: 2022/11/21 20:53:37 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ SRCS = main.c \
 	   getset_data.c \
 	   threads.c
 
-CC = gcc -pthread
+CC = gcc
 
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -pthread -Wall -Wextra -Werror -g
 
 NAME = philo
 
@@ -33,7 +33,7 @@ all : $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME)
+	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 	@echo "\033[100m\033[1m\033[92mProgram compiled and ready to execute."
 
 clean :
