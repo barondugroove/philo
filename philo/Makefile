@@ -6,7 +6,7 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/13 12:26:21 by bchabot           #+#    #+#              #
-#    Updated: 2022/11/21 20:53:37 by bchabot          ###   ########.fr        #
+#    Updated: 2022/11/22 15:58:21 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS = main.c \
 
 CC = gcc
 
-CFLAGS = -pthread -Wall -Wextra -Werror -g
+CFLAGS = -lpthread -Wall -Wextra -Werror -g
 
 NAME = philo
 

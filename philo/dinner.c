@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:11:18 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/21 19:20:47 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/28 12:34:27 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	eating(t_philo *philo)
 	pthread_mutex_lock(philo->your_fork);
 	print_message(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->data->reaper);
-	philo->tl_meal = get_time();
+	philo->tn_meal = get_time() + philo->data->tt_die;
 	pthread_mutex_unlock(&philo->data->reaper);
 	print_message(philo, "is eating");
 	usleep(philo->data->tt_eat * 1000);
-	pthread_mutex_unlock(philo->your_fork);
 	pthread_mutex_unlock(&philo->my_fork);
+	pthread_mutex_unlock(philo->your_fork);
 }
 
 void	sleeping(t_philo *philo)
@@ -40,8 +40,8 @@ void	*life(void *philo)
 
 	p = philo;
 	miam = 0;
-	if (p->my_id % 2 == 0)
-		usleep(500);
+	if (p->my_id % 2 != 0)
+		usleep(5000);
 	while (1)
 	{
 		if (get_death(p) || get_replete(p))

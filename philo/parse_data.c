@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:15:45 by bchabot           #+#    #+#             */
-/*   Updated: 2022/11/21 17:37:56 by bchabot          ###   ########.fr       */
+/*   Updated: 2022/11/22 15:41:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_data(t_philo *philo, t_data *data)
 	{
 		philo[i].data = data;
 		philo[i].my_id = i + 1;
-		philo[i].tl_meal = data->start;
+		philo[i].tn_meal = get_time() + data->tt_die;
 		pthread_mutex_init(&philo[i].my_fork, NULL);
 		if (i != 0)
 			philo[i].your_fork = &philo[i - 1].my_fork;
